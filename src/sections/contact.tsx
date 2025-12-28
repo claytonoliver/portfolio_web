@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -44,11 +44,12 @@ function Contact() {
   const { social } = portfolioData;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string>("");
-  const turnstileRef = useRef<any>(null);
+  const turnstileRef = useRef<{ reset: () => void } | null>(null);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | "warning" | null;
     message: string;
   }>({ type: null, message: "" });
+  const [currentTime, setCurrentTime] = useState<number>(0);
 
   // Rate limiting: 3 envios a cada 10 minutos
   const rateLimit = useRateLimit({
@@ -67,11 +68,19 @@ function Contact() {
     },
   });
 
+  // Atualizar tempo atual a cada segundo
+  useEffect(() => {
+    setCurrentTime(Date.now());
+    const interval = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Formatar tempo restante
   const getResetTimeMessage = () => {
-    if (!rateLimit.resetTime) return "";
-    const now = Date.now();
-    const diff = rateLimit.resetTime - now;
+    if (!rateLimit.resetTime || typeof rateLimit.resetTime !== 'number') return "";
+    const diff = rateLimit.resetTime - currentTime;
     const minutes = Math.ceil(diff / 60000);
     return `Tente novamente em ${minutes} minuto${minutes > 1 ? "s" : ""}.`;
   };
@@ -131,15 +140,15 @@ function Contact() {
   return (
     <div
       id="contato"
-      className="flex w-full min-h-screen justify-center items-center px-8 py-20"
+      className="flex w-full min-h-screen justify-center items-center px-4 md:px-8 py-20"
     >
-      <div className="flex flex-col items-start gap-12 w-full max-w-6xl">
+      <div className="flex flex-col items-start gap-8 md:gap-12 w-full max-w-6xl">
         {/* Header */}
         <div
           className="flex flex-col gap-2"
           style={{ animation: "fadeIn 0.8s ease-out" }}
         >
-          <h2 className="text-5xl font-black text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground">
             Entre em Contato
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"></div>
@@ -148,10 +157,10 @@ function Contact() {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 w-full">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12 w-full">
           {/* Contact Form */}
           <div
-            className="flex-1 backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-10"
+            className="flex-1 backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-4 md:p-6 lg:p-10"
             style={{ animation: "fadeIn 1s ease-out 0.2s backwards" }}
           >
             <Form {...form}>
@@ -229,17 +238,19 @@ function Contact() {
                     <Shield className="h-4 w-4" />
                     Verificação de Segurança (Cloudflare)
                   </label>
-                  <Turnstile
-                    ref={turnstileRef}
-                    siteKey="0x4AAAAAACJXc843MaEnSHqg"
-                    onSuccess={(token) => setCaptchaToken(token)}
-                    onError={() => setCaptchaToken("")}
-                    onExpire={() => setCaptchaToken("")}
-                    options={{
-                      theme: "auto",
-                      size: "normal",
-                    }}
-                  />
+                  <div className="w-full max-w-full overflow-hidden">
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey="0x4AAAAAACJXc843MaEnSHqg"
+                      onSuccess={(token) => setCaptchaToken(token)}
+                      onError={() => setCaptchaToken("")}
+                      onExpire={() => setCaptchaToken("")}
+                      options={{
+                        theme: "auto",
+                        size: "normal",
+                      }}
+                    />
+                  </div>
                 </div>
 
                 {/* Rate Limit Info */}
@@ -292,11 +303,11 @@ function Contact() {
 
           {/* Social Links */}
           <div
-            className="lg:w-120 flex flex-col gap-6"
+            className="lg:w-120 flex flex-col gap-4 md:gap-6"
             style={{ animation: "slideInRight 1s ease-out 0.4s backwards" }}
           >
-            <div className="backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6">
+            <div className="backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-4 md:p-6 lg:p-8">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">
                 Redes Sociais
               </h3>
               <div className="flex flex-col gap-4">
@@ -313,11 +324,11 @@ function Contact() {
                       <div className="p-2 rounded-lg bg-gradient-to-r from-orange-400 to-amber-500 group-hover:from-orange-500 group-hover:to-amber-600 transition-all">
                         <Icon className="w-5 h-5 text-white" />
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <div className="font-semibold text-foreground">
                           {link.label}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-xs md:text-sm text-muted-foreground break-all">
                           {link.platform === "email"
                             ? "claytonoliveira.dev@gmail.com"
                             : `@${link.platform}`}
@@ -330,8 +341,8 @@ function Contact() {
             </div>
 
             {/* Quick Info */}
-            <div className="backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-8">
-              <h3 className="text-xl font-bold text-foreground mb-4">
+            <div className="backdrop-blur-xl bg-muted/50 border border-border rounded-2xl shadow-2xl p-4 md:p-6 lg:p-8">
+              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 md:mb-4">
                 Disponibilidade
               </h3>
               <div className="flex items-center gap-3">
