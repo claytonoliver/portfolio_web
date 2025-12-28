@@ -15,7 +15,7 @@ function Hero(){
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-black text-foreground">
-                        Clayton F. Trindade Oliveira
+                        Clayton Oliveira
                     </h1>
 
                     <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
