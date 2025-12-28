@@ -29,7 +29,7 @@ function Hero(){
 
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-2 md:mt-4">
                         <a
-                            href="#projetos"
+                            href="#projects"
                             className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform text-center"
                         >
                             Ver Projetos
