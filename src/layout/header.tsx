@@ -42,13 +42,13 @@ const NavItems: NavigationItem [] = [
         icon: BriefcaseIcon
     },
     {
-        title: "Projects",
+        title: "Projetos",
         link: "#projetos",
         description: "Meus projetos",
         icon: CodeIcon
     },
     {
-        title: "Contact",
+        title: "Contato",
         link: "#contato",
         description: "Entre em contato",
         icon: MailIcon

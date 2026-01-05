@@ -254,14 +254,6 @@ function Contact() {
                   </div>
                 </div>
 
-                {/* Rate Limit Info */}
-                {!rateLimit.isLimited && rateLimit.remainingAttempts < 3 && (
-                  <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-600 dark:text-yellow-500 text-sm flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    Você tem {rateLimit.remainingAttempts} envio{rateLimit.remainingAttempts !== 1 ? "s" : ""} restante{rateLimit.remainingAttempts !== 1 ? "s" : ""} nos próximos 10 minutos.
-                  </div>
-                )}
-
                 {submitStatus.type && (
                   <div
                     className={`p-4 rounded-lg ${
