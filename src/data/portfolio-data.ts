@@ -123,15 +123,23 @@ export const portfolioData: PortfolioData = {
       title: "Sistema de Reconciliação Financeira",
       description: "Microsserviços para reconciliação financeira com integração CERC e processamento de recebíveis. Arquitetura escalável com RabbitMQ, PostgreSQL e monitoramento New Relic.",
       technologies: [".NET 8", "RabbitMQ", "PostgreSQL", "AWS", "Clean Architecture", "CQRS"],
+      github: "https://github.com/claytonoliver/ExpenseControl",
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
       stars: 1
     },
     {
       id: "3",
-      title: "Microsserviços com Domain Events",
-      description: "Arquitetura de microsserviços utilizando Domain Events para comunicação entre contextos. Implementação de CQRS, MediatR e MassTransit para mensageria assíncrona.",
-      technologies: [".NET 8", "MediatR", "MassTransit", "Domain Events", "Event Sourcing"],
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+      title: "Gerenciador de Gastos",
+      description: "Aplicação para controle de finanças pessoais desenvolvida em um monorepositório .NET 8, utilizando CQRS e MediatR para separação de responsabilidades. Backend estruturado com Entity Framework Core e frontend em React, responsivo e focado na experiência do usuário.",
+      technologies: [
+        ".NET 8",
+        "CQRS",
+        "MediatR",
+        "Entity Framework Core",
+        "Domain Events",
+        "React"
+      ],
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
     },
     {
       id: "4",
