@@ -124,8 +124,7 @@ export const portfolioData: PortfolioData = {
       description: "Microsserviços para reconciliação financeira com integração CERC e processamento de recebíveis. Arquitetura escalável com RabbitMQ, PostgreSQL e monitoramento New Relic.",
       technologies: [".NET 8", "RabbitMQ", "PostgreSQL", "AWS", "Clean Architecture", "CQRS"],
       github: "https://github.com/claytonoliver/ExpenseControl",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
-      stars: 1
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
     },
     {
       id: "3",
