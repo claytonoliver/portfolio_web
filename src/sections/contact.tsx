@@ -19,7 +19,7 @@ function Contact() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground">
             Entre em Contato
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"></div>
+          <div className="h-1 w-23 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"></div>
           <p className="text-lg text-muted-foreground mt-2">
             Estou sempre aberto para discutir novos projetos e oportunidades
           </p>
