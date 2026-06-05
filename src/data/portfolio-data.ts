@@ -64,10 +64,25 @@ export const portfolioData: PortfolioData = {
 
   experiences: [
     {
-      company: "Flow Solutions",
-      role: "Desenvolvedor Backend .NET",
-      startDate: "Ago 2024",
+      company: "Paschoalotto",
+      role: "Desenvolvedor Full Stack Pleno",
+      startDate: "Fev 2026",
       endDate: "Atual",
+      description: "Atuação na modernização, integração e sustentação de sistemas críticos de CRM, sendo responsável por conectar sistemas legados a arquiteturas modernas de alta performance, otimização de concorrência e processamento massivo de dados.",
+      achievements: [
+        "Desenvolvimento e evolução de APIs REST e serviços utilizando desde ecossistemas legados (.NET Framework 4.5 e VB6) até versões modernas (.NET 8 a .NET 10)",
+        "Construção de integrações robustas e pontes de comunicação entre o core business em VB6 e novas arquiteturas de microsserviços/APIs",
+        "Desenvolvimento e sustentação de Windows Services para processamento em background e automação de rotinas internas",
+        "Implementação de lógica avançada de paralelismo e concorrência para otimizar o tempo de resposta e a vazão de dados do sistema",
+        "Modelagem, manutenção e otimização de consultas em banco de dados PostgreSQL para suportar a alta carga do CRM",
+        "Refatoração de código legado visando melhoria de performance, redução de débito técnico e estabilidade do ambiente Windows Server"
+      ]
+    },
+    {
+      company: "Flow Solutions",
+      role: "Desenvolvedor Backend Pleno .NET",
+      startDate: "Ago 2025",
+      endDate: "Fev 2026",
       description: "Desenvolvimento de microsserviços com .NET 8, aplicando Clean Architecture, CQRS e Domain Events. Integração com AWS e sistemas de reconciliação financeira.",
       achievements: [
         "Desenvolvimento de microsserviços com .NET 8",
@@ -82,7 +97,7 @@ export const portfolioData: PortfolioData = {
     {
       company: "Sicoob Cocred",
       role: "Desenvolvedor Full Stack & DevOps",
-      startDate: "Abr 2024",
+      startDate: "Abr 2022",
       endDate: "Jul 2025",
       description: "Desenvolvimento full stack com .NET, Angular e SQL Server. Pipelines CI/CD, containerização com Docker e orquestração com Kubernetes.",
       achievements: [
@@ -94,19 +109,6 @@ export const portfolioData: PortfolioData = {
         "Análise de código com SonarQube"
       ]
     },
-    {
-      company: "Sicoob Cocred",
-      role: "Analista de Sistemas e Infraestrutura",
-      startDate: "Mar 2022",
-      endDate: "Abr 2024",
-      description: "Automações com PowerShell e Python, administração de infraestrutura Microsoft e suporte avançado para sistemas corporativos.",
-      achievements: [
-        "Automações com PowerShell e Python para provisionamento",
-        "Administração Office 365, Active Directory, GPO, Exchange",
-        "Análise e manutenção em sistemas TOTVS RM e Fluig",
-        "Suporte avançado para Linux, redes TCP/IP e firewall Fortinet"
-      ]
-    }
   ],
 
   projects: [
