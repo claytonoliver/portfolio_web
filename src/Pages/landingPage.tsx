@@ -4,7 +4,6 @@ import About from "@/sections/about.tsx";
 import Skills from "@/sections/skills.tsx";
 import Experience from "@/sections/experience.tsx";
 import Projects from "@/sections/projects.tsx";
-import Contact from "@/sections/contact.tsx";
 
 function LandingPage() {
     return (
@@ -16,7 +15,6 @@ function LandingPage() {
             <Skills />
             <Experience />
             <Projects />
-            <Contact />
         </Layout>
     );
 }
