@@ -81,7 +81,7 @@ function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex flex-col sm:flex-row gap-2 md:gap-3 mt-auto pt-3 md:pt-4 border-t border-border">
+                <div className="flex flex-col justify-center items-center sm:flex-row gap-2 md:gap-3 mt-auto pt-3 md:pt-4 border-t border-border">
                   {project.github && (
                     <a
                       href={project.github}
